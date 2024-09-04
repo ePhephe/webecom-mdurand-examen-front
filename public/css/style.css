@@ -1,0 +1,1424 @@
+@charset "UTF-8";
+/********** Import des fichiers de base ***********/
+/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */
+@import url("https://use.typekit.net/bpp6wxg.css");
+html,
+body,
+p,
+ol,
+ul,
+li,
+dl,
+dt,
+dd,
+blockquote,
+figure,
+fieldset,
+legend,
+textarea,
+pre,
+iframe,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+ul {
+  list-style: none;
+}
+
+button,
+input,
+select {
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+iframe {
+  border: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
+}
+
+@font-face {
+  font-family: "OpenDys";
+  src: url("../fonts/OpenDys/OpenDyslexic3-Regular.ttf");
+}
+@font-face {
+  font-family: "Caveat";
+  src: url("../fonts/Caveat/Caveat-VariableFont_wght.ttf");
+}
+:root {
+  /* TYPOGRAPHIE */
+  --fontTitre: "source-sans-pro", sans-serif;
+  --fontTexte: "source-sans-pro", sans-serif;
+  /* Palette de couleurs */
+  --firstColor: #FFC836;
+  --secondColor: #BD0017;
+  --thirdColor: #D6D6D6;
+  --fourthColor: #292929;
+  --fifthColor: #F1F1F1;
+  --sixthColor: #6E6E6E;
+  --whiteColor: #FFFFFF;
+  --blackColor: #000000;
+  /* Couleurs standards */
+  --succesColor: hsl(113, 53%, 53%);
+  --errorColor: hsl(0, 100%, 61%);
+  /* Gouttières et Espacements */
+  --gouttiere: 20px;
+  --marginDesktop: 120px;
+  --marginTablet: 40px;
+  --marginSmartphone: 20px;
+  --paddingButton: 12px 32px;
+  /* RADIUS */
+  --radiusLarge: 30px;
+  --radiusMedium: 20px;
+  --radiusSmall: 10px;
+  --radiusRond: 50%;
+}
+
+/* Variables SCSS */
+/********** Import des composants ***********/
+/* Fonction de calcul des largeurs en fonction des colonnes et de la gouttière */
+/* Mixin pour généré les différentes width */
+/* Une classe full et une fit pour de la mise en page*/
+.full {
+  width: 100%;
+}
+
+.fit {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+/* Format Large*/
+.large-1-12 {
+  width: calc(8.3333333333% - 11 * var(--gouttiere) / 12);
+}
+.large-2-12 {
+  width: calc(16.6666666667% - 5 * var(--gouttiere) / 6);
+}
+.large-3-12 {
+  width: calc(25% - 3 * var(--gouttiere) / 4);
+}
+.large-4-12 {
+  width: calc(33.3333333333% - 2 * var(--gouttiere) / 3);
+}
+.large-5-12 {
+  width: calc(41.6666666667% - 1.4 * var(--gouttiere) / 2.4);
+}
+.large-6-12 {
+  width: calc(50% - 1 * var(--gouttiere) / 2);
+}
+.large-7-12 {
+  width: calc(58.3333333333% - 0.7142857143 * var(--gouttiere) / 1.7142857143);
+}
+.large-8-12 {
+  width: calc(66.6666666667% - 0.5 * var(--gouttiere) / 1.5);
+}
+.large-9-12 {
+  width: calc(75% - 0.3333333333 * var(--gouttiere) / 1.3333333333);
+}
+.large-10-12 {
+  width: calc(83.3333333333% - 0.2 * var(--gouttiere) / 1.2);
+}
+.large-11-12 {
+  width: calc(91.6666666667% - 0.0909090909 * var(--gouttiere) / 1.0909090909);
+}
+.large-12-12 {
+  width: calc(100% - 0 * var(--gouttiere) / 1);
+}
+
+/* Format Medium */
+@media all and (min-width: 500px) and (max-width: 1080px) {
+  .medium-1-8 {
+    width: calc(12.5% - 7 * var(--gouttiere) / 8);
+  }
+  .medium-2-8 {
+    width: calc(25% - 3 * var(--gouttiere) / 4);
+  }
+  .medium-3-8 {
+    width: calc(37.5% - 1.6666666667 * var(--gouttiere) / 2.6666666667);
+  }
+  .medium-4-8 {
+    width: calc(50% - 1 * var(--gouttiere) / 2);
+  }
+  .medium-5-8 {
+    width: calc(62.5% - 0.6 * var(--gouttiere) / 1.6);
+  }
+  .medium-6-8 {
+    width: calc(75% - 0.3333333333 * var(--gouttiere) / 1.3333333333);
+  }
+  .medium-7-8 {
+    width: calc(87.5% - 0.1428571429 * var(--gouttiere) / 1.1428571429);
+  }
+  .medium-8-8 {
+    width: calc(100% - 0 * var(--gouttiere) / 1);
+  }
+  .container-marges-tablet {
+    padding-left: var(--marginTablet);
+    padding-right: var(--marginTablet);
+  }
+  .container-marges-left-tablet {
+    padding-left: var(--marginTablet);
+  }
+  .container-marges-right-tablet {
+    padding-right: var(--marginTablet);
+  }
+}
+/* Format Small */
+@media all and (max-width: 500px) {
+  .small-1-4 {
+    width: calc(25% - 3 * var(--gouttiere) / 4);
+  }
+  .small-2-4 {
+    width: calc(50% - 1 * var(--gouttiere) / 2);
+  }
+  .small-3-4 {
+    width: calc(75% - 0.3333333333 * var(--gouttiere) / 1.3333333333);
+  }
+  .small-4-4 {
+    width: calc(100% - 0 * var(--gouttiere) / 1);
+  }
+  .container-marges-smartphone {
+    padding-left: var(--marginSmartphone);
+    padding-right: var(--marginSmartphone);
+  }
+  .container-marges-left-smartphone {
+    padding-left: var(--marginSmartphone);
+  }
+  .container-marges-right-smartphone {
+    padding-left: var(--marginSmartphone);
+  }
+}
+/* Container */
+.container-full {
+  max-width: 1920px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media all and (max-width: 1920px) {
+  .container-full {
+    max-width: 1024px;
+  }
+}
+@media all and (max-width: 1080px) {
+  .container-full {
+    max-width: 800px;
+  }
+}
+@media all and (max-width: 800px) {
+  .container-full {
+    padding-left: var(--marginTablet);
+    padding-right: var(--marginTablet);
+  }
+}
+@media all and (max-width: 500px) {
+  .container-full {
+    max-width: 350px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+@media all and (max-width: 350px) {
+  .container-full {
+    padding-left: var(--marginSmartphone);
+    padding-right: var(--marginSmartphone);
+  }
+}
+
+/************* Marges et Paddings Génériques **************/
+/* Tableau de définition pour la génération */
+/* Fonction de génération de marges/padding par multiple de 10 */
+/* Mixin pour généré les différentes marges */
+/* Mixin pour généré les différents padding */
+/* Génération des marges */
+.margin-top-8px {
+  margin-top: 8px;
+}
+.margin-top-16px {
+  margin-top: 16px;
+}
+.margin-top-24px {
+  margin-top: 24px;
+}
+.margin-top-32px {
+  margin-top: 32px;
+}
+.margin-top-40px {
+  margin-top: 40px;
+}
+.margin-top-48px {
+  margin-top: 48px;
+}
+.margin-top-56px {
+  margin-top: 56px;
+}
+.margin-top-64px {
+  margin-top: 64px;
+}
+.margin-top-72px {
+  margin-top: 72px;
+}
+.margin-top-80px {
+  margin-top: 80px;
+}
+.margin-bottom-8px {
+  margin-bottom: 8px;
+}
+.margin-bottom-16px {
+  margin-bottom: 16px;
+}
+.margin-bottom-24px {
+  margin-bottom: 24px;
+}
+.margin-bottom-32px {
+  margin-bottom: 32px;
+}
+.margin-bottom-40px {
+  margin-bottom: 40px;
+}
+.margin-bottom-48px {
+  margin-bottom: 48px;
+}
+.margin-bottom-56px {
+  margin-bottom: 56px;
+}
+.margin-bottom-64px {
+  margin-bottom: 64px;
+}
+.margin-bottom-72px {
+  margin-bottom: 72px;
+}
+.margin-bottom-80px {
+  margin-bottom: 80px;
+}
+.margin-left-8px {
+  margin-left: 8px;
+}
+.margin-left-16px {
+  margin-left: 16px;
+}
+.margin-left-24px {
+  margin-left: 24px;
+}
+.margin-left-32px {
+  margin-left: 32px;
+}
+.margin-left-40px {
+  margin-left: 40px;
+}
+.margin-left-48px {
+  margin-left: 48px;
+}
+.margin-left-56px {
+  margin-left: 56px;
+}
+.margin-left-64px {
+  margin-left: 64px;
+}
+.margin-left-72px {
+  margin-left: 72px;
+}
+.margin-left-80px {
+  margin-left: 80px;
+}
+.margin-right-8px {
+  margin-right: 8px;
+}
+.margin-right-16px {
+  margin-right: 16px;
+}
+.margin-right-24px {
+  margin-right: 24px;
+}
+.margin-right-32px {
+  margin-right: 32px;
+}
+.margin-right-40px {
+  margin-right: 40px;
+}
+.margin-right-48px {
+  margin-right: 48px;
+}
+.margin-right-56px {
+  margin-right: 56px;
+}
+.margin-right-64px {
+  margin-right: 64px;
+}
+.margin-right-72px {
+  margin-right: 72px;
+}
+.margin-right-80px {
+  margin-right: 80px;
+}
+.margin-8px {
+  margin: 8px;
+}
+.margin-16px {
+  margin: 16px;
+}
+.margin-24px {
+  margin: 24px;
+}
+.margin-32px {
+  margin: 32px;
+}
+.margin-40px {
+  margin: 40px;
+}
+.margin-48px {
+  margin: 48px;
+}
+.margin-56px {
+  margin: 56px;
+}
+.margin-64px {
+  margin: 64px;
+}
+.margin-72px {
+  margin: 72px;
+}
+.margin-80px {
+  margin: 80px;
+}
+
+/* Génération des padding */
+.padding-top-8px {
+  padding-top: 8px;
+}
+.padding-top-16px {
+  padding-top: 16px;
+}
+.padding-top-24px {
+  padding-top: 24px;
+}
+.padding-top-32px {
+  padding-top: 32px;
+}
+.padding-top-40px {
+  padding-top: 40px;
+}
+.padding-top-48px {
+  padding-top: 48px;
+}
+.padding-top-56px {
+  padding-top: 56px;
+}
+.padding-top-64px {
+  padding-top: 64px;
+}
+.padding-top-72px {
+  padding-top: 72px;
+}
+.padding-top-80px {
+  padding-top: 80px;
+}
+.padding-bottom-8px {
+  padding-bottom: 8px;
+}
+.padding-bottom-16px {
+  padding-bottom: 16px;
+}
+.padding-bottom-24px {
+  padding-bottom: 24px;
+}
+.padding-bottom-32px {
+  padding-bottom: 32px;
+}
+.padding-bottom-40px {
+  padding-bottom: 40px;
+}
+.padding-bottom-48px {
+  padding-bottom: 48px;
+}
+.padding-bottom-56px {
+  padding-bottom: 56px;
+}
+.padding-bottom-64px {
+  padding-bottom: 64px;
+}
+.padding-bottom-72px {
+  padding-bottom: 72px;
+}
+.padding-bottom-80px {
+  padding-bottom: 80px;
+}
+.padding-left-8px {
+  padding-left: 8px;
+}
+.padding-left-16px {
+  padding-left: 16px;
+}
+.padding-left-24px {
+  padding-left: 24px;
+}
+.padding-left-32px {
+  padding-left: 32px;
+}
+.padding-left-40px {
+  padding-left: 40px;
+}
+.padding-left-48px {
+  padding-left: 48px;
+}
+.padding-left-56px {
+  padding-left: 56px;
+}
+.padding-left-64px {
+  padding-left: 64px;
+}
+.padding-left-72px {
+  padding-left: 72px;
+}
+.padding-left-80px {
+  padding-left: 80px;
+}
+.padding-right-8px {
+  padding-right: 8px;
+}
+.padding-right-16px {
+  padding-right: 16px;
+}
+.padding-right-24px {
+  padding-right: 24px;
+}
+.padding-right-32px {
+  padding-right: 32px;
+}
+.padding-right-40px {
+  padding-right: 40px;
+}
+.padding-right-48px {
+  padding-right: 48px;
+}
+.padding-right-56px {
+  padding-right: 56px;
+}
+.padding-right-64px {
+  padding-right: 64px;
+}
+.padding-right-72px {
+  padding-right: 72px;
+}
+.padding-right-80px {
+  padding-right: 80px;
+}
+.padding-8px {
+  padding: 8px;
+}
+.padding-16px {
+  padding: 16px;
+}
+.padding-24px {
+  padding: 24px;
+}
+.padding-32px {
+  padding: 32px;
+}
+.padding-40px {
+  padding: 40px;
+}
+.padding-48px {
+  padding: 48px;
+}
+.padding-56px {
+  padding: 56px;
+}
+.padding-64px {
+  padding: 64px;
+}
+.padding-72px {
+  padding: 72px;
+}
+.padding-80px {
+  padding: 80px;
+}
+
+/* Classes pour les flexbox */
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.direction-column {
+  flex-direction: column;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-end {
+  align-items: flex-end;
+}
+
+.content-center {
+  align-content: center;
+}
+
+.gap {
+  gap: var(--gouttiere);
+}
+
+/************* Marges et Paddings Génériques **************/
+/* Fonction de génération de marges/padding par multiple de 10 */
+/* Mixin pour généré les différentes marges */
+/* Génération des gap */
+.gap-8px {
+  gap: 8px;
+}
+.gap-16px {
+  gap: 16px;
+}
+.gap-24px {
+  gap: 24px;
+}
+.gap-32px {
+  gap: 32px;
+}
+.gap-40px {
+  gap: 40px;
+}
+.gap-48px {
+  gap: 48px;
+}
+.gap-56px {
+  gap: 56px;
+}
+.gap-64px {
+  gap: 64px;
+}
+.gap-72px {
+  gap: 72px;
+}
+.gap-80px {
+  gap: 80px;
+}
+
+/* Classes spécifiques pour de la mise en page en format medium/small */
+@media all and (max-width: 1080px) {
+  .direction-column-reverse-responsive {
+    flex-direction: column-reverse;
+  }
+  .direction-column-responsive {
+    flex-direction: column;
+  }
+}
+/* Menu Burger masqué normalement */
+.menu-burger {
+  display: none;
+  /* Affichage en mode medium/large */
+}
+@media all and (max-width: 1080px) {
+  .menu-burger {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-around;
+    padding: 5px;
+    position: relative;
+  }
+  .menu-burger > span {
+    width: 30px;
+    display: block;
+    height: 3px;
+    background-color: var(--fourthColor);
+  }
+}
+
+/* Croix du menu Burger masqué normalement */
+@media all and (max-width: 1080px) {
+  .menu-burger-close > span {
+    position: absolute;
+    transition: transform 400ms linear;
+  }
+  .menu-burger-close span.burger-top {
+    transform: rotate(45deg);
+    top: 22px;
+    width: 40px;
+  }
+  .menu-burger-close span.burger-middle {
+    display: none;
+  }
+  .menu-burger-close span.burger-bottom {
+    transform: rotate(-45deg);
+    top: 22px;
+    width: 40px;
+  }
+}
+
+/* Navigation Menu Burger masqué normalement */
+.navigation-burger {
+  display: none;
+  /* Affichage en mode smartphone */
+}
+@media all and (max-width: 1080px) {
+  .navigation-burger {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--firstColor);
+    display: flex;
+    padding: 5px;
+    position: fixed;
+    top: 80px;
+    right: 0px;
+    z-index: 11;
+    transition: transform 400ms linear;
+    transform: translateX(100%);
+  }
+}
+
+/* Transformation pour l'affichage du header en smartphone */
+@media all and (max-width: 1080px) {
+  .navigation-burger-affiche {
+    transform: translateX(0%);
+  }
+}
+
+@media all and (max-width: 1080px) {
+  .navigation-classique {
+    display: none;
+  }
+}
+
+/* Style des boutons switch */
+/* Div classe switch avec un p pour le libellé et input+label checkbox pour le champ */
+.div-input-police input[type=checkbox] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+.div-input-police input + label {
+  background: var(--firstColor);
+  border: 1px solid var(--fourthColor);
+}
+.div-input-police input:checked + label:after {
+  left: calc(100% - 3px);
+  transform: translateX(-100%);
+}
+.div-input-police label {
+  text-indent: -9999px;
+  width: 50px;
+  height: 28px;
+  background: grey;
+  display: inline-block;
+  border-radius: 100px;
+  position: relative;
+  margin: 0 8px;
+  cursor: pointer;
+}
+.div-input-police label:after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background: var(--fourthColor);
+  border-radius: 90px;
+  transition: 0.3s;
+}
+.div-input-police label:active:after {
+  width: 40px;
+}
+
+.switch {
+  position: fixed;
+  bottom: -55px;
+  left: 20px;
+  background-color: var(--secondColor);
+  color: var(--whiteColor);
+  border-radius: 20px 20px 0 0;
+  padding: 8px;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 120px;
+  transition: transform 200ms linear;
+}
+.switch.ouvert {
+  transform: translateY(-55px);
+}
+.switch p {
+  cursor: pointer;
+}
+@media all and (max-width: 1080px) {
+  .switch {
+    display: none;
+  }
+}
+
+.switch-burger {
+  display: none;
+}
+@media all and (max-width: 1080px) {
+  .switch-burger {
+    display: flex;
+    background-color: var(--firstColor);
+    color: var(--fourthColor);
+    border-top: 1px solid var(--fourthColor);
+    border-radius: 0;
+    padding-top: 20px;
+  }
+}
+
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(farthest-side, var(--firstColor) 94%, rgba(0, 0, 0, 0)) top/8px 8px no-repeat, conic-gradient(rgba(0, 0, 0, 0) 30%, var(--firstColor));
+  -webkit-mask: radial-gradient(farthest-side, rgba(0, 0, 0, 0) calc(100% - 8px), #000 0);
+  animation: l13 1s infinite linear;
+}
+
+@keyframes l13 {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+/********** Règles Générales ***********/
+/* Pour les titres */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--fontTitre);
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+/* Pour le body */
+body {
+  font-family: var(--fontTexte);
+  background-color: var(--whiteColor);
+  min-height: 100vh;
+}
+body.accessible-theme {
+  font-family: "OpenDys", sans-serif;
+  --fontTexte: "OpenDys", sans-serif;
+  --fontTitre: "OpenDys", sans-serif;
+}
+
+/* Pour les liens */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Pour les images responsives */
+.responsive {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Pour masquer des éléments */
+.display-none {
+  display: none;
+}
+
+/* Mise en forme des boutons */
+.button {
+  color: var(--blackColor);
+  padding: 16px 32px;
+  border: none;
+  transition: all 0.3s;
+  background-color: var(--firstColor);
+  width: -moz-fit-content;
+  width: fit-content;
+  cursor: pointer;
+  border-radius: 8px;
+}
+.button:hover {
+  opacity: 0.8;
+}
+.button.primary {
+  background-color: var(--firstColor);
+  font-weight: bold;
+}
+.button.secondary {
+  background-color: transparent;
+  border: 1px solid var(--blackColor);
+}
+.button.secondary:hover {
+  background-color: var(--secondColor);
+  color: var(--whiteColor);
+  border-color: var(--whiteColor);
+}
+.button.disabled {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.5;
+}
+.button.quantite {
+  background-color: var(--firstColor);
+  font-weight: bold;
+  font-size: 40px;
+  width: 76px;
+  height: 76px;
+  padding: 0;
+}
+
+/* Mise en forme commune pour la modal */
+.modal {
+  border-radius: 16px;
+  background-color: var(--whiteColor);
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.25);
+}
+.modal .titre-modal {
+  font-size: 42px;
+  font-weight: bold;
+}
+.modal .message-modal {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+/* Mise en forme globale des éléments de formulaire */
+input {
+  font-family: var(--fontTexte);
+}
+
+/* Format pour les cases de choix*/
+.choix-radio {
+  border-radius: 8px;
+  border: 4px solid var(--thirdColor);
+  width: 285px;
+  height: 202px;
+  gap: 7px;
+  cursor: pointer;
+}
+@media all and (max-width: 500px) {
+  .choix-radio {
+    width: 250px;
+  }
+}
+.choix-radio input[type=radio] {
+  display: none;
+}
+.choix-radio span {
+  font-size: 26px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+/* Style de la fenêtre modal */
+#modal-choix-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.25);
+  overflow-y: auto;
+}
+#modal-choix-container #modal-choix {
+  background-color: var(--whiteColor);
+  border-radius: 16px;
+}
+#modal-choix-container #modal-title {
+  font-size: 26px;
+  font-weight: bold;
+}
+#modal-choix-container #modal-texte {
+  font-size: 18px;
+  font-weight: bold;
+}
+@media all and (max-width: 1080px) {
+  #modal-choix-container #modal-selection {
+    gap: 24px;
+  }
+}
+#modal-choix-container #modal-selection input[type=radio] {
+  display: none;
+}
+#modal-choix-container #modal-selection input[type=radio] + label img {
+  width: 90px;
+}
+#modal-choix-container #modal-selection input[type=radio] + label img.format-XL {
+  width: 120px;
+}
+#modal-choix-container #modal-selection input[type=radio]:checked + label {
+  border: 8px solid var(--firstColor);
+}
+#modal-choix-container #modal-selection #container-quantity {
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
+  width: fit-content;
+  border-radius: 8px;
+}
+#modal-choix-container #modal-selection #container-quantity #quantite {
+  border: none;
+  text-align: center;
+  font-weight: bold;
+  font-size: 40px;
+  font-family: var(--fontTexte);
+  width: 130px;
+}
+@media all and (max-width: 500px) {
+  #modal-choix-container #modal-selection #container-quantity #quantite {
+    width: 100px;
+  }
+}
+#modal-choix-container #modal-selection input[type=submit] {
+  align-self: center;
+}
+
+/* Classe pour gérer les erreurs des formulaires */
+.p-error {
+  color: var(--errorColor);
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+/* Navigation burger pour le résumé de commande, toujours affiché avec une taille qui s'adapte */
+.navigation-burger {
+  display: flex;
+}
+@media all and (max-width: 1080px) {
+  .navigation-burger {
+    width: 309px;
+  }
+}
+@media all and (max-width: 500px) {
+  .navigation-burger {
+    width: 90vw;
+  }
+}
+
+/********** Page d'accueil de choix du service **********/
+.background-image-banniere {
+  width: 100%;
+}
+.background-image-banniere img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.accueil-service {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+}
+@media all and (max-width: 1080px) {
+  .accueil-service {
+    top: 20%;
+    left: 5%;
+    gap: 32px;
+  }
+}
+@media all and (max-width: 500px) {
+  .accueil-service .accueil-service {
+    top: 15%;
+    left: 0;
+  }
+}
+
+/********** Page de composition de la commande **********/
+/* Style pour la partie affichage de la commande */
+.order-container {
+  background-color: var(--fifthColor);
+  width: 309px;
+  height: 100vh;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  padding: 25px;
+}
+.order-container .header-order {
+  border-bottom: 1px solid var(--blackColor);
+  padding-bottom: 8px;
+}
+.order-container .header-order img {
+  margin-bottom: 40px;
+}
+.order-container .header-order .order-number {
+  font-size: 42px;
+}
+.order-container #cart-order {
+  height: 50vh;
+  overflow-y: auto;
+  flex-wrap: nowrap;
+  padding-right: 8px;
+}
+@media all and (max-width: 500px) {
+  .order-container #cart-order {
+    height: 35vh;
+  }
+}
+.order-container #cart-order .order-product {
+  font-weight: bold;
+}
+.order-container #cart-order .order-product ul {
+  list-style: disc;
+  font-weight: normal;
+  margin-left: 25px;
+}
+.order-container .footer-order {
+  border-top: 1px solid var(--blackColor);
+  padding-top: 8px;
+}
+.order-container .footer-order .order-total {
+  font-size: 22px;
+}
+.order-container .footer-order #order-total-price {
+  font-size: 42px;
+}
+.order-container .footer-order .order-buttons-action {
+  margin-top: 40px;
+}
+
+/* Div pour compenser l'affichage de la commande */
+.order-container-fixed {
+  width: 309px;
+}
+@media all and (max-width: 1080px) {
+  .order-container-fixed {
+    display: none;
+  }
+}
+
+/* Style pour la partie qui contient les produits */
+.products-container {
+  width: calc(100% - 309px);
+}
+@media all and (max-width: 1080px) {
+  .products-container {
+    width: 100%;
+  }
+}
+.products-container h1 {
+  text-align: center;
+}
+.products-container .categories-container {
+  padding: 16px 28px;
+  gap: 30px;
+  position: sticky;
+  top: 0;
+  background-color: var(--whiteColor);
+}
+.products-container .categories-container .swiper-button-prev,
+.products-container .categories-container .swiper-button-next {
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+  margin: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.products-container .categories-container .swiper-button-prev::after,
+.products-container .categories-container .swiper-button-next::after {
+  content-visibility: hidden;
+}
+.products-container .categories-container .swiper-button-next img {
+  transform: rotate(180deg);
+}
+.products-container .categories-container .swiper-button-lock {
+  display: flex;
+}
+.products-container .swiper {
+  width: calc(100% - 172px);
+}
+.products-container .swiper .swiper-wrapper {
+  box-sizing: border-box;
+}
+.products-container .swiper .swiper-wrapper .swiper-slide {
+  height: 120px;
+  width: 120px;
+  padding: 10px 20px;
+  border: 1px solid var(--sixthColor);
+  border-radius: 8px;
+}
+.products-container .swiper .swiper-wrapper .swiper-slide a {
+  display: flex;
+  text-transform: capitalize;
+  font-size: 14px;
+}
+.products-container .swiper .swiper-wrapper .swiper-slide.current {
+  border: 4px solid var(--firstColor);
+}
+.products-container .swiper .swiper-wrapper .swiper-slide .img-categorie {
+  width: 80px;
+  height: 80px;
+}
+.products-container .product-list {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.products-container .product-list p {
+  margin-top: 8px;
+  margin-bottom: 54px;
+  font-size: 14px;
+}
+.products-container .product-list #product-list-container {
+  gap: 14px 20px;
+}
+@media all and (max-width: 500px) {
+  .products-container .product-list #product-list-container {
+    justify-content: center;
+  }
+}
+.products-container .product-list #product-list-container article {
+  border: 1px solid var(--sixthColor);
+  border-radius: 8px;
+  cursor: pointer;
+  width: 200px;
+}
+.products-container .product-list #product-list-container article .product-image {
+  width: 200px;
+  height: 200px;
+}
+.products-container .product-list #product-list-container article .product-image img {
+  width: 140px;
+}
+.products-container .product-list #product-list-container article .product-description {
+  padding: 20px 10px;
+}
+
+/* Style pour le choix des boissons et des sauces dans un menu */
+@media all and (max-width: 500px) {
+  .boissons-container, .sauces-container {
+    gap: 0;
+  }
+}
+.boissons-container .swiper-button-prev-boissons,
+.boissons-container .swiper-button-next-boissons,
+.boissons-container .swiper-button-prev-sauces,
+.boissons-container .swiper-button-next-sauces, .sauces-container .swiper-button-prev-boissons,
+.sauces-container .swiper-button-next-boissons,
+.sauces-container .swiper-button-prev-sauces,
+.sauces-container .swiper-button-next-sauces {
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+  margin: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.boissons-container .swiper-button-prev-boissons::after,
+.boissons-container .swiper-button-next-boissons::after,
+.boissons-container .swiper-button-prev-sauces::after,
+.boissons-container .swiper-button-next-sauces::after, .sauces-container .swiper-button-prev-boissons::after,
+.sauces-container .swiper-button-next-boissons::after,
+.sauces-container .swiper-button-prev-sauces::after,
+.sauces-container .swiper-button-next-sauces::after {
+  content-visibility: hidden;
+}
+.boissons-container .swiper-button-next-boissons img, .boissons-container .swiper-button-next-sauces img, .sauces-container .swiper-button-next-boissons img, .sauces-container .swiper-button-next-sauces img {
+  transform: rotate(180deg);
+}
+.boissons-container .swiper-button-lock, .sauces-container .swiper-button-lock {
+  display: flex;
+}
+
+.swiper-boissons, .swiper-sauces {
+  width: calc(100% - 112px);
+  overflow: hidden;
+}
+.swiper-boissons .swiper-wrapper, .swiper-sauces .swiper-wrapper {
+  box-sizing: border-box;
+}
+.swiper-boissons .swiper-wrapper .swiper-slide, .swiper-sauces .swiper-wrapper .swiper-slide {
+  width: fit-content;
+}
+.swiper-boissons .swiper-wrapper .swiper-slide label, .swiper-sauces .swiper-wrapper .swiper-slide label {
+  border: 1px solid var(--sixthColor);
+  border-radius: 8px;
+  min-height: 154px;
+}
+
+/********** Page de gestion du chevalet **********/
+.chevalet {
+  position: absolute;
+  top: 5%;
+  left: 25%;
+}
+@media all and (max-width: 1080px) {
+  .chevalet {
+    top: 15%;
+    left: 5%;
+    gap: 32px;
+  }
+}
+@media all and (max-width: 500px) {
+  .chevalet {
+    left: 0;
+  }
+}
+
+/* Mise en page du formulaire de saisie des numéros du chevalet */
+.inputs-number-chevalet {
+  padding: 0 40px;
+}
+.inputs-number-chevalet input[type=text] {
+  border: none;
+  outline: none;
+  border-bottom: 15px solid var(--thirdColor);
+  height: 136px;
+  width: 155px;
+  font-size: 96px;
+  font-weight: bold;
+  text-align: center;
+}
+@media all and (max-width: 500px) {
+  .inputs-number-chevalet input[type=text] {
+    width: 60px;
+    font-size: 56px;
+  }
+}
+
+/********** Page de fin de commande **********/
+.ending {
+  position: absolute;
+  top: 20%;
+  left: 5%;
+}
+@media all and (max-width: 1080px) {
+  .ending {
+    top: 15%;
+    left: 5%;
+    gap: 32px;
+  }
+}
+@media all and (max-width: 500px) {
+  .ending {
+    left: 0;
+  }
+}
+
+.handwriting {
+  font-family: "Caveat", cursive;
+  font-weight: bold;
+  font-size: 48px;
+}
+
+.new-order {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+@media all and (max-width: 500px) {
+  .new-order {
+    bottom: 40px;
+    width: 90%;
+    text-align: center;
+  }
+}
+
+/********** Gestion spécifique en thème accessible **********/
+.accessible-theme #cart-order {
+  height: 30vh;
+}
+.accessible-theme #cart-order .order-product {
+  width: 200px;
+}
+.accessible-theme .footer-order .order-total {
+  font-size: 16px;
+}
+.accessible-theme .footer-order #order-total-price {
+  font-size: 22px;
+}
+.accessible-theme #modal-choix-container #modal-selection input[type=radio] + label span {
+  font-size: 16px;
+}
+.accessible-theme .modal .titre-modal {
+  font-size: 36px;
+}
+.accessible-theme .modal .message-modal {
+  font-size: 22px;
+}
+
+/********** Règle spécficique responsive **********/
+@media all and (max-width: 1080px) {
+  .menu-burger {
+    background-color: var(--firstColor);
+    position: fixed;
+    top: 50%;
+    right: 0;
+    z-index: 12;
+  }
+  .actions-modal {
+    justify-content: center;
+    gap: 24px;
+  }
+  .choix-modal {
+    gap: 24px;
+  }
+}
+@media all and (max-width: 500px) {
+  .choix-service {
+    gap: 24px;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

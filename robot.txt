@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: http://exam-front.mdurand.mywebecom.ovh/sitemap.xml

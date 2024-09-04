@@ -1,0 +1,59 @@
+@import url("https://use.typekit.net/bpp6wxg.css");
+
+@font-face {
+    font-family: 'OpenDys';
+    src: url("../fonts/OpenDys/OpenDyslexic3-Regular.ttf");
+}
+
+@font-face {
+    font-family: 'Caveat';
+    src: url("../fonts/Caveat/Caveat-VariableFont_wght.ttf");
+}
+
+:root {
+    /* TYPOGRAPHIE */
+    --fontTitre: "source-sans-pro", sans-serif;
+    --fontTexte: "source-sans-pro", sans-serif;
+
+    /* Palette de couleurs */
+    --firstColor: #FFC836;
+    --secondColor: #BD0017;
+    --thirdColor: #D6D6D6;
+    --fourthColor: #292929;
+    --fifthColor: #F1F1F1;
+    --sixthColor: #6E6E6E;
+    --whiteColor: #FFFFFF;
+    --blackColor: #000000;
+
+    /* Couleurs standards */
+    --succesColor: hsl(113, 53%, 53%);
+    --errorColor: hsl(0, 100%, 61%);
+
+    /* Gouttières et Espacements */
+    --gouttiere: 20px;
+    --marginDesktop: 120px;
+    --marginTablet: 40px;
+    --marginSmartphone: 20px;
+    --paddingButton: 12px 32px; 
+
+    /* RADIUS */
+    --radiusLarge: 30px;
+    --radiusMedium: 20px;
+    --radiusSmall: 10px;
+    --radiusRond: 50%;
+}
+
+/* Variables SCSS */
+$numberColumnDesktop: 12;
+$numberColumnTablet: 8;
+$numberColumnSmartphone: 4;
+
+$widthFull: 100%;
+
+$widthContainer1200: 1920px;
+$maxWidthLarge: 1920px;
+$widthContainer1000: 1024px;
+$maxWidthMedium: 1080px;
+$widthContainer800: 800px;
+$maxWidthSmall: 500px;
+$widthContainer400: 350px;

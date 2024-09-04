@@ -1,0 +1,700 @@
+/********** Import des fichiers de base ***********/
+@import "./reset.scss";
+@import "./variables.scss";
+/********** Import des composants ***********/
+@import "./components/_layout.scss";
+@import "./components/_flexbox.scss";
+@import "./components/_menu-burger.scss";
+@import "./components/_switch.scss";
+@import "./components/_loader.scss";
+
+/********** Règles Générales ***********/
+/* Pour les titres */
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--fontTitre);
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 28px;
+}
+
+/* Pour le body */
+body {
+    font-family: var(--fontTexte);
+    background-color: var(--whiteColor);
+    min-height: 100vh;
+
+    &.accessible-theme {
+        // Gestion du thème accessible avec OpenDys
+        font-family: "OpenDys", sans-serif;
+        --fontTexte: "OpenDys", sans-serif;
+        --fontTitre: "OpenDys", sans-serif;
+    }
+}
+
+/* Pour les liens */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Pour les images responsives */
+.responsive {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Pour masquer des éléments */
+.display-none {
+    display: none;
+}
+
+/* Mise en forme des boutons */
+@mixin button-styles($bg-color) {
+    // Mixin pour le style général des boutons
+    color: var(--blackColor);
+    padding: 16px 32px;
+    border: none;
+    transition: all 0.3s;
+    background-color: $bg-color;
+    width: -moz-fit-content;
+    width: fit-content;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+@mixin button-hover {
+
+    // Mixin pour l'effet au hover des boutons
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+.button {
+    @include button-styles(var(--firstColor));
+    @include button-hover;
+
+    &.primary {
+        // Bouton principal
+        background-color: var(--firstColor);
+        font-weight: bold;
+    }
+
+    &.secondary {
+        // Bouton secondaire
+        background-color: transparent;
+        border: 1px solid var(--blackColor);
+
+        &:hover {
+            background-color: var(--secondColor);
+            color: var(--whiteColor);
+            border-color: var(--whiteColor);
+        }
+    }
+
+    &.disabled {
+        // Bouton désactivé
+        pointer-events: none;
+        cursor: default;
+        opacity: 0.5;
+    }
+
+    &.quantite {
+        // Boutons spécifiques pour l'input quantité
+        background-color: var(--firstColor);
+        font-weight: bold;
+        font-size: 40px;
+        width: 76px;
+        height: 76px;
+        padding: 0;
+    }
+}
+
+/* Mise en forme commune pour la modal */
+.modal {
+    border-radius: 16px;
+    background-color: var(--whiteColor);
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.25);
+
+    .titre-modal {
+        font-size: 42px;
+        font-weight: bold;
+    }
+
+    .message-modal {
+        font-size: 26px;
+        font-weight: bold;
+    }
+}
+
+/* Mise en forme globale des éléments de formulaire */
+input {
+    font-family: var(--fontTexte);
+}
+
+/* Format pour les cases de choix*/
+.choix-radio {
+    border-radius: 8px;
+    border: 4px solid var(--thirdColor);
+    width: 285px;
+    height: 202px;
+    gap: 7px;
+    cursor: pointer;
+
+    @media all and (max-width: $maxWidthSmall) {
+        width: 250px;
+    }
+
+    input[type="radio"] {
+        display: none;
+    }
+
+    span {
+        font-size: 26px;
+        font-weight: bold;
+        text-transform: capitalize;
+    }
+}
+
+/* Style de la fenêtre modal */
+#modal-choix-container {
+    // Container global
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.25);
+    overflow-y: auto;
+
+    #modal-choix {
+        // Modal en elle-même
+        background-color: var(--whiteColor);
+        border-radius: 16px;
+    }
+
+    #modal-title {
+        // Titre de la modal
+        font-size: 26px;
+        font-weight: bold;
+    }
+
+    #modal-texte {
+        // Texte d'accroche dans la modal
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    #modal-selection {
+
+        // Style du formulaire présent à l'intérieur de la modal
+        @media all and (max-width: $maxWidthMedium) {
+            gap: 24px;
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        input[type="radio"]+label {
+            img {
+                width: 90px;
+
+                &.format-XL {
+                    width: 120px;
+                }
+            }
+        }
+
+        input[type="radio"]:checked+label {
+            border: 8px solid var(--firstColor);
+        }
+
+        #container-quantity {
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
+            width: fit-content;
+            border-radius: 8px;
+
+            #quantite {
+                border: none;
+                text-align: center;
+                font-weight: bold;
+                font-size: 40px;
+                font-family: var(--fontTexte);
+                width: 130px;
+
+                @media all and (max-width: $maxWidthSmall) {
+                    width: 100px;
+                }
+            }
+        }
+
+        input[type="submit"] {
+            align-self: center;
+        }
+    }
+}
+
+/* Classe pour gérer les erreurs des formulaires */
+.p-error {
+    color: var(--errorColor);
+    font-size: 0.8rem;
+    font-style: italic;
+}
+
+/* Navigation burger pour le résumé de commande, toujours affiché avec une taille qui s'adapte */
+.navigation-burger {
+    display: flex;
+
+    @media all and (max-width: $maxWidthMedium) {
+        width: 309px;
+    }
+
+    @media all and (max-width: $maxWidthSmall) {
+        width: 90vw;
+    }
+}
+
+/********** Page d'accueil de choix du service **********/
+.background-image-banniere {
+    // Image de fond placé derrière la modal
+    width: 100%;
+
+    img {
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+.accueil-service {
+    // Style cette modal en particulier
+    position: absolute;
+    top: 20%;
+    left: 20%;
+
+    @media all and (max-width: $maxWidthMedium) {
+        top: 20%;
+        left: 5%;
+        gap: 32px;
+    }
+
+    @media all and (max-width: $maxWidthSmall) {
+        .accueil-service {
+            top: 15%;
+            left: 0;
+        }
+    }
+}
+
+/********** Page de composition de la commande **********/
+/* Style pour la partie affichage de la commande */
+.order-container {
+    background-color: var(--fifthColor);
+    width: 309px;
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1;
+    padding: 25px;
+
+    .header-order {
+        // Header avec le numéro de commande
+        border-bottom: 1px solid var(--blackColor);
+        padding-bottom: 8px;
+
+        img {
+            margin-bottom: 40px;
+        }
+
+        .order-number {
+            font-size: 42px;
+        }
+    }
+
+    #cart-order {
+        // Contenu de la commande
+        height: 50vh;
+        overflow-y: auto;
+        flex-wrap: nowrap;
+        padding-right: 8px;
+
+        @media all and (max-width: $maxWidthSmall) {
+            height: 35vh;
+        }
+
+        .order-product {
+            font-weight: bold;
+
+            ul {
+                list-style: disc;
+                font-weight: normal;
+                margin-left: 25px;
+            }
+        }
+    }
+
+    .footer-order {
+        // Footer avec le prix et les boutons
+        border-top: 1px solid var(--blackColor);
+        padding-top: 8px;
+
+        .order-total {
+            font-size: 22px;
+        }
+
+        #order-total-price {
+            font-size: 42px;
+        }
+
+        .order-buttons-action {
+            margin-top: 40px;
+        }
+    }
+}
+
+/* Div pour compenser l'affichage de la commande */
+.order-container-fixed {
+    width: 309px;
+
+    @media all and (max-width: $maxWidthMedium) {
+        display: none;
+    }
+}
+
+/* Style pour la partie qui contient les produits */
+.products-container {
+    width: calc(100% - 309px); // On compense la partie panier de droite
+
+    @media all and (max-width: $maxWidthMedium) {
+        width: 100%;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    .categories-container {
+        // Partie affichage des catégorie de produit
+        padding: 16px 28px;
+        gap: 30px;
+        position: sticky;
+        top: 0;
+        background-color: var(--whiteColor);
+
+        // On surcharge le style des boutons de swiper
+        .swiper-button-prev,
+        .swiper-button-next {
+            width: fit-content;
+            height: fit-content;
+            position: relative;
+            margin: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+
+            &::after {
+                content-visibility: hidden;
+            }
+        }
+
+        .swiper-button-next img {
+            transform: rotate(180deg);
+        }
+
+        .swiper-button-lock {
+            display: flex;
+        }
+    }
+
+    .swiper {
+        // Slider des catégories
+        width: calc(100% - 172px); // Le swiper prends 100% - les boutons de navigations et les gap
+
+        .swiper-wrapper {
+            box-sizing: border-box;
+
+            .swiper-slide {
+                // On stylise la slide de la catégorie
+                height: 120px;
+                width: 120px;
+                padding: 10px 20px;
+                border: 1px solid var(--sixthColor);
+                border-radius: 8px;
+
+                a {
+                    display: flex;
+                    text-transform: capitalize;
+                    font-size: 14px;
+                }
+
+                &.current {
+                    border: 4px solid var(--firstColor);
+                }
+
+                .img-categorie {
+                    width: 80px;
+                    height: 80px;
+                }
+            }
+        }
+    }
+
+    .product-list {
+        // Partie affichage des produits
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: auto;
+        margin-right: auto;
+
+        p {
+            margin-top: 8px;
+            margin-bottom: 54px;
+            font-size: 14px;
+        }
+
+        #product-list-container {
+            gap: 14px 20px;
+
+            @media all and (max-width: $maxWidthSmall) {
+                justify-content: center;
+            }
+
+            article {
+                // Article pour un produit
+                border: 1px solid var(--sixthColor);
+                border-radius: 8px;
+                cursor: pointer;
+                width: 200px;
+
+                .product-image {
+                    width: 200px;
+                    height: 200px;
+
+                    img {
+                        width: 140px;
+                    }
+                }
+
+                .product-description {
+                    padding: 20px 10px;
+                }
+            }
+        }
+    }
+}
+
+/* Style pour le choix des boissons et des sauces dans un menu */
+.boissons-container,.sauces-container {
+    @media all and (max-width: $maxWidthSmall) {
+        gap: 0;
+    }
+
+    // On surcharge le style des boutons de swiper
+    .swiper-button-prev-boissons,
+    .swiper-button-next-boissons,
+    .swiper-button-prev-sauces,
+    .swiper-button-next-sauces {
+        width: fit-content;
+        height: fit-content;
+        position: relative;
+        margin: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+
+        &::after {
+            content-visibility: hidden;
+        }
+    }
+
+    .swiper-button-next-boissons,.swiper-button-next-sauces{
+        img {
+            transform: rotate(180deg);
+        }
+    }
+
+    .swiper-button-lock {
+        display: flex;
+    }
+}
+
+.swiper-boissons,.swiper-sauces {
+    // Slider des boissons et sauces dans un menu
+    // Le swiper prends 100% - les boutons de navigations et les gap
+    width: calc(100% - 112px);
+    overflow: hidden;
+
+    .swiper-wrapper {
+        box-sizing: border-box;
+
+        // On stylise la slide de la catégorie
+        .swiper-slide {
+            width: fit-content;
+            
+            label {
+                border: 1px solid var(--sixthColor);
+                border-radius: 8px;
+                min-height: 154px;
+            }
+        }
+    }
+}
+
+/********** Page de gestion du chevalet **********/
+.chevalet {
+    // Style cette modal en particulier
+    position: absolute;
+    top: 5%;
+    left: 25%;
+
+    @media all and (max-width: $maxWidthMedium) {
+        top: 15%;
+        left: 5%;
+        gap: 32px;
+    }
+
+    @media all and (max-width: $maxWidthSmall) {
+        left: 0;
+    }
+}
+
+/* Mise en page du formulaire de saisie des numéros du chevalet */
+.inputs-number-chevalet {
+    padding: 0 40px;
+
+    input[type="text"] {
+        border: none;
+        outline: none;
+        border-bottom: 15px solid var(--thirdColor);
+        height: 136px;
+        width: 155px;
+        font-size: 96px;
+        font-weight: bold;
+        text-align: center;
+
+        @media all and (max-width: $maxWidthSmall) {
+            width: 60px;
+            font-size: 56px;
+        }
+    }
+}
+
+/********** Page de fin de commande **********/
+.ending {
+    // Style cette modal en particulier
+    position: absolute;
+    top: 20%;
+    left: 5%;
+
+    @media all and (max-width: $maxWidthMedium) {
+        top: 15%;
+        left: 5%;
+        gap: 32px;
+    }
+
+    @media all and (max-width: $maxWidthSmall) {
+        left: 0;
+    }
+}
+
+.handwriting {
+    // Afifchage particulier pour l'écriture manuscrite 
+    font-family: "Caveat", cursive;
+    font-weight: bold;
+    font-size: 48px;
+}
+
+.new-order {
+    // Style du bouton d'une nouvelle commande
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    @media all and (max-width: $maxWidthSmall) {
+        bottom: 40px;
+        width: 90%;
+        text-align: center;
+    }
+}
+
+/********** Gestion spécifique en thème accessible **********/
+.accessible-theme {
+    #cart-order {
+        height: 30vh;
+
+        .order-product {
+            width: 200px;
+        }
+    }
+
+    .footer-order {
+        .order-total {
+            font-size: 16px;
+        }
+
+        #order-total-price {
+            font-size: 22px;
+        }
+    }
+
+    #modal-choix-container {
+        #modal-selection {
+            input[type="radio"]+label {
+                span {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+
+    .modal {
+        .titre-modal {
+            font-size: 36px;
+        }
+
+        .message-modal {
+            font-size: 22px;
+        }
+    }
+}
+
+/********** Règle spécficique responsive **********/
+// Tablette (<1024px)
+@media all and (max-width: $maxWidthMedium) {
+    .menu-burger {
+        background-color: var(--firstColor);
+        position: fixed;
+        top: 50%;
+        right: 0;
+        z-index: 12;
+    }
+
+    .actions-modal {
+        justify-content: center;
+        gap: 24px;
+    }
+
+    .choix-modal {
+        gap: 24px;
+    }
+}
+
+// Smartphone (<500px)
+@media all and (max-width: $maxWidthSmall) {
+    .choix-service {
+        gap: 24px;
+    }
+}

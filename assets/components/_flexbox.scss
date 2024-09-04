@@ -1,0 +1,68 @@
+/* Classes pour les flexbox */
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+.direction-column {
+    flex-direction: column;
+}
+.justify-center {
+    justify-content: center;
+}
+.justify-start {
+    justify-content: flex-start;
+}
+.justify-between {
+    justify-content: space-between;
+}
+.justify-around {
+    justify-content: space-around;
+}
+.justify-end {
+    justify-content: flex-end;
+}
+.align-center {
+    align-items: center;
+}
+.align-end {
+    align-items: flex-end;
+}
+.content-center {
+    align-content: center;
+}
+.gap {
+    gap: var(--gouttiere);
+}
+
+/************* Marges et Paddings Génériques **************/
+
+/* Fonction de génération de marges/padding par multiple de 10 */
+@function gaps($i) {
+  @return calc($i*8px);
+}
+
+/* Mixin pour généré les différentes marges */
+@mixin gap-generiques() {
+
+    @for $i from 1 to 11 {
+      &-#{gaps($i)} {
+        gap: gaps($i);
+      }
+    }
+}
+
+/* Génération des gap */
+.gap {
+  @include gap-generiques();
+}
+
+/* Classes spécifiques pour de la mise en page en format medium/small */
+@media all and (max-width : $maxWidthMedium) {
+    .direction-column-reverse-responsive {
+        flex-direction: column-reverse;
+    }
+
+    .direction-column-responsive {
+        flex-direction: column;
+    }
+}

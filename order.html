@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Référencement - Titre et meta description de la page -->
+    <title>WakDo : Commandez vos délicieux repas</title>
+    <meta name="description" content="Faites votre choix parmi une large gamme de produits WakDo. Commandez vos produits préférés et profitez d'un repas savoureux.">
+    <link rel="canonical" href="http://exam-front.mdurand.mywebecom.ovh/order.html">
+    <!-- Style CSS global -->
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="/public/js/library/swiper/swiper-bundle.min.css">
+    <!-- Mise en place du favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/public/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/public/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/public/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/public/favicon/site.webmanifest">
+</head>
+<body>
+    <main class="flex">
+        <!-- Affichage principale avec la liste des catégories et l'affichage des produits  -->
+        <div class="products-container">
+            <h1>Composez votre repas chez WakDo</h1>
+            <!-- Liste des catégories -->
+            <div class="categories-container flex align-center justify-between">
+                <!-- Bouton slider pour aller en arrière -->
+                <div class="swiper-button-prev flex justify-center">
+                    <img src="/public/images/site/fleche-slider.png" alt="Flèche de navigation vers la catégorie suivante">
+                </div>
+                <!-- Slider main container / Pour l'affichage des catégories-->
+                <nav class="swiper mySwiper">
+                    <!-- Additional required wrapper -->
+                    <ul id="list-categories" class="swiper-wrapper">
+                        <!-- Slides / Catégories de produit -->
+                        <div class="large-12-12 gap-24px flex direction-column align-center justify-center">
+                            <!-- Message de chargement en attendant l'affichage -->
+                            <div class="loader"></div>
+                            Catégories en cours de chargement...
+                        </div>
+                    </ul>
+                </nav>
+                <!-- Bouton slider pour aller en arrière -->
+                <div class="swiper-button-next">
+                    <img src="/public/images/site/fleche-slider.png" alt="Flèche de navigation vers la catégorie précédente">
+                </div>
+            </div>
+            <!-- Section pour la liste des articles -->
+            <section class="product-list large-10-12 flex direction-column">
+                <h2>Nos menus</h2>
+                <p>Un sandwich, une friture ou une salade et une boisson</p>
+                <!-- Contenu de la liste des produits -->
+                <div id="product-list-container" class="flex">
+                    <div class="large-12-12 gap-24px flex direction-column align-center justify-center">
+                        <!-- Message de chargement en attendant l'affichage -->
+                        <div class="loader"></div>
+                        Produits en cours de chargement...
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- Div qui va contenir le menu sur la partie de droite -->
+        <div>
+            <!-- Une première div pour afficher le menu en fixed-100vh / Façon menu burger en responsive -->
+            <div id="navigationBurger" class="navigation-burger order-container flex direction-column justify-between">
+                <!-- Header du panier -->
+                <div class="header-order flex direction-column align-center">
+                    <!-- Logo de Wakdo -->
+                    <img src="/public/images/site/logo.png" alt="Logo de Wakdo">
+                    <div class="large-12-12 flex justify-between">
+                        <div class="flex direction-column justify-end">
+                            Commande numéro
+                            <div id="order-reference"></div>
+                        </div>
+                        <div id="order-number" class="order-number">
+                            
+                        </div>
+                    </div>
+                </div>
+                <!-- Contenu du panier -->
+                <div id="cart-order" class="gap-24px flex direction-column align-center">
+
+                </div>
+                <!-- Footer du panier -->
+                <div class="footer-order flex direction-column align-center">
+                    <!-- Affichage du total du panier -->
+                    <div class="large-12-12 flex justify-between">
+                        <div class="order-total">TOTAL<br> (ttc)</div>
+                        <div id="order-total-price">
+                            
+                        </div>
+                    </div>
+                    <!-- Boutons d'actions sur la commande (abandon ou payer) -->
+                    <div class="order-buttons-action large-12-12 flex justify-between">
+                        <a href="/" title="Abandonner ma commande" id="button-abandon" class="button secondary">Abandon</a>
+                        <a href="end.html" title="Finaliser ma commande" id="button-payer" class="button primary">Payer</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Une seconde pour rattraper la largeur de ce menu dû à la position fixed -->
+            <div class="order-container-fixed">
+            </div>
+        </div>
+        <!-- Div pour affichage de la modal -->
+        <div id="modal-choix-container" class="flex align-center justify-center display-none">
+            <!-- Contenu de la modal -->
+            <div id="modal-choix" class="large-8-12 small-4-4 padding-16px gap-24px flex direction-column align-center">
+                <!-- Affichage des bouton de fermeture et retour -->
+                <div id="modal-buttons-nav" class="large-12-12 flex justify-end">
+                    <a id="modal-button-back" href="" title="Retour à l'étape précédente" class="button secondary display-none">Retour</a>
+                    <a id="modal-button-close" href="" title="Fermer la fenêtre">
+                        <img src="/public/images/site/supprimer.png" alt="Icone de fermeture">
+                    </a>
+                </div>
+                <!-- Titre de la modal -->
+                <div id="modal-title" class="large-9-12">
+                    Une grosse faim ?
+                </div>
+                <!-- Test d'accorche dans la modal -->
+                <div id="modal-texte" class="large-9-12">
+                    Le menu maxi Best Of comprend un sandwich, une grande frite et une boisson 50 Cl
+                </div>
+                <!-- Formulaire pour réaliser les choix -->
+                <form id="modal-selection" class="large-9-12 margin-top-24px gap-32px flex direction-column align-center justify-center">
+                    
+                </form>
+            </div>
+        </div>
+        <!-- Icône du menu Burger pour accéder à la commande en responsive -->
+        <div id="menuBurger" class="menu-burger">
+            <img src="/public/images/site/icon-order.png" alt="Icone d'accès à la commande">
+        </div>
+        <!-- Mise en place d'un switch pour afficher un police accessible aux personnes dyslexiques -->
+        <div class="switch div-input-police flex justify-center direction-column gap justify-center align-center margin-top-30px">
+            <p>Font OpenDys</p>
+            <div>
+                <input type="checkbox" class="switch-input-police" id="switchPolice">
+                <label for="switchPolice">Police</label> 
+            </div>
+        </div>
+    </main>
+    <!-- On ajoute nos scripts JS -->
+    <!-- Script des biliothèques si nécessaires -->
+    <script src="/public/js/library/swiper/swiper-bundle.min.js"></script>
+    <!-- Script général -->
+    <script src="/public/js/app.js"></script>
+    <!-- Script spéficique à la page des commandes -->
+    <script src="/public/js/params.js"></script>
+    <script src="/public/js/order.js"></script>
+    <script src="/public/js/order_products.js"></script>
+    <script src="/public/js/order_elements.js"></script>
+    <script src="/public/js/order_cart.js"></script>
+</body>
+</html>

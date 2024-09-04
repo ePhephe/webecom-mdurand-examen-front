@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Référencement - Titre et meta description de la page -->
+    <title>Wakdo : Bienvenue sur votre service de commande !</title>
+    <meta name="description" content="Découvrez l'expérience de restauration Wakdo ! Choisissez de déguster votre menu sur place ou optez pour l'emporter. Commandez dès maintenant !">
+    <link rel="canonical" href="http://exam-front.mdurand.mywebecom.ovh">
+    <!-- Style CSS global -->
+    <link rel="stylesheet" href="/public/css/style.css">
+    <!-- Mise en place du favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/public/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/public/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/public/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/public/favicon/site.webmanifest">
+</head>
+<body>
+    <main>
+        <!-- Div pour gérer l'image background  -->
+        <div class="background-image-banniere">
+            <img src="/public/images/site/mc_landing_banner.png" alt="Un menu BigMac Wakdo">
+        </div>
+        <!-- Div pour l'affichage du message d'accueil et les choix de service (sur place ou à emporter) -->
+        <div class="accueil-service modal large-6-12 medium-7-8 small-4-4 padding-32px gap-64px flex direction-column">
+            <!-- Titre de la div - Ajustement pour intégrer un H1 -->
+            <div class="titre-modal">
+                <h1>Bienvenue sur votre service de commande WakDo !</h1>
+            </div>
+            <p class="message-modal">
+                Souhaitez-vous consommer votre menu sur place ou préférez-vous l'emporter ?
+            </p>
+            <!-- Div pour gérer le choix du service (sur place ou à emporter) -->
+            <div class="choix-service flex justify-around">
+                <!-- Pour les choix de ce format : input radio contenu dans le label  -->
+                <label class="choix-radio flex direction-column align-center justify-center">
+                    <img src="/public/images/site/illustration-sur-place.png" alt="Table pour manger sur place">
+                    <span>
+                        Sur place
+                    </span>
+                    <input type="radio" id="surPlace" name="service" value="surPlace">
+                </label>
+                <label class="choix-radio flex direction-column align-center justify-center">
+                    <img src="/public/images/site/illustration-a-emporter.png" alt="Sac en papier pour une commande à emporter">
+                    <span>
+                        À emporter
+                    </span>
+                    <input type="radio" id="aEmporter" name="service" value="aEmporter">
+                </label>
+            </div>
+        </div>
+        <!-- Mise en place d'un switch pour afficher un police accessible aux personnes dyslexiques -->
+        <div class="switch div-input-police flex justify-center direction-column gap justify-center align-center margin-top-30px">
+            <p>Font OpenDys</p>
+            <div>
+                <input type="checkbox" class="switch-input-police" id="switchPolice">
+                <label for="switchPolice">Police</label> 
+            </div>
+        </div>
+    </main>
+    <!-- On ajoute nos scripts JS -->
+    <!-- Script général -->
+    <script src="/public/js/app.js"></script>
+    <!-- Script spéficique à l'accueil -->
+    <script src="/public/js/accueil.js"></script>
+</body>
+</html>

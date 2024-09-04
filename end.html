@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Référencement - Titre et meta description de la page -->
+    <title>WakDo : Merci pour votre commande !</title>
+    <meta name="description" content="Merci d'avoir commandé chez WakDo ! Votre commande est en cours de préparation. Profitez de votre repas et à bientôt !">
+    <link rel="canonical" href="http://exam-front.mdurand.mywebecom.ovh/end.html">
+    <!-- Style CSS global -->
+    <link rel="stylesheet" href="/public/css/style.css">
+    <!-- Mise en place du favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/public/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/public/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/public/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/public/favicon/site.webmanifest">
+</head>
+<body>
+    <main>
+        <!-- Div pour gérer l'image background  -->
+        <div class="background-image-banniere">
+            <img src="/public/images/site/mc_landing_banner.png" alt="Un menu BigMac Wakdo">
+        </div>
+        <!-- Div pour l'affichage du message d'accueil et les choix de service (sur place ou à emporter) -->
+        <div class="ending modal large-7-12 medium-7-8 small-4-4 padding-32px gap-64px flex direction-column">
+            <div id="number-commande" class="message-modal display-none">
+            </div>
+            <!-- Titre de la div - Ajustement pour intégrer un H1 -->
+            <div class="titre-modal">
+                <h1>Merci pour votre commande chez WakDo !</h1>
+                Toute l'équipe vous remercie,
+            </div>
+            <p class="message-modal">
+                Et vous souhaite un bon appétit dans nos restaurants,
+            </p>
+            <div class="handwriting">
+                A bientôt !
+            </div>
+        </div>
+        <a id="button-end" href="/" title="Réaliser une nouvelle commande" class="new-order button primary">Nouvelle commande</a>
+        <!-- Mise en place d'un switch pour afficher un police accessible aux personnes dyslexiques -->
+        <div class="switch div-input-police flex justify-center direction-column gap justify-center align-center margin-top-30px">
+            <p>Font OpenDys</p>
+            <div>
+                <input type="checkbox" class="switch-input-police" id="switchPolice">
+                <label for="switchPolice">Police</label> 
+            </div>
+        </div>
+    </main>
+    <!-- On ajoute nos scripts JS -->
+    <!-- Script général -->
+    <script src="/public/js/app.js"></script>
+    <!-- Script spéficique à la fin de la commande -->
+    <script src="/public/js/end.js"></script>
+</body>
+</html>
